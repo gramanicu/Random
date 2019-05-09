@@ -1,5 +1,6 @@
 
-# EasyRand &middot; [![Build Status](https://travis-ci.com/gramanicu/EasyRand.svg?branch=master)](https://travis-ci.com/gramanicu/EasyRand)
+# EasyRand &middot; [![Build Status](https://travis-ci.com/gramanicu/EasyRand.svg?branch=master)](https://travis-ci.com/gramanicu/EasyRand) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 
 More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL).
 
