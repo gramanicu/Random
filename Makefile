@@ -5,8 +5,8 @@
 
 # Compilation variables
 CC = g++
-CFLAGS = -Wno-unused-parameter -Wall -Wextra -pedantic -g -03 -std=c++11
-EXE = main
+CFLAGS = -Wno-unused-parameter -Wall -Wextra -pedantic -g -O3 -std=c++11
+EXE = bin/main
 SRC = $(wildcard */*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
@@ -30,10 +30,10 @@ clean:
 	rm -f $(EXE) $(OBJ)
 	echo "Deleted the binary and object files"
 
-# Automatic coding style, in my personal style
-beauty-development:
-	clang-format -i -style=file */*.cpp
-	clang-format -i -style=file */*.h
+# Automatic coding style
+beauty:
+	clang-format -i -style=file sources/*.cpp
+	clang-format -i -style=file headers/*.h
 
 # Checks the memory for leaks
 MFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes

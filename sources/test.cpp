@@ -1,5 +1,12 @@
 #include "../headers/EasyRand.h"
+#include <iostream>
+
+using namespace EasyRand;
+using namespace std;
 
 int main() {
-    return 0;
+    cout << Random::randInt() << "\n";
+    cout << Random::randBool() << "\n";
+    cout << Random::randReal() << "\n";
+    return 0; 
 }
