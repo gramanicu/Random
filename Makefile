@@ -13,6 +13,7 @@ OBJ = $(SRC:.cpp=.o)
 # Compiles the program
 build: $(OBJ)
 	$(info Compiling code...)
+	@mkdir bin/
 	@$(CC) -o $(EXE) $^ $(CFLAGS) ||:
 	$(info Compilation successfull)
 	-@rm -f *.o ||:

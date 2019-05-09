@@ -70,3 +70,6 @@ sources/*.o
 bin/main
 sources/*.o
 .vscode*
+bin/main
+sources/*.o
+.vscode*
