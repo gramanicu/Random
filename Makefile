@@ -26,6 +26,11 @@ build: $(OBJ)
 run: build
 	./$(EXE)
 
+# Test the binary
+test: build
+	./$(EXE) > test_result.txt
+
+
 # Deletes the binary and object files
 clean:
 	rm -f $(EXE) $(OBJ)
