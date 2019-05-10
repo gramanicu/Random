@@ -21,7 +21,9 @@ class Random {
    public:
     static bool randBool();
     static int32_t randInt();
+    static int32_t randInt(const int32_t iStart, const int32_t iEnd);
     static double randReal();
+    static double randReal(const double iStart, const double iEnd);
 };
 }  // namespace EasyRand
 
