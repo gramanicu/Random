@@ -20,6 +20,7 @@ using namespace std;
 #define SHOW_LOG_EVERY 1000
 
 int main() {
+    // Test Integer Distribution
     int32_t array[MAX_SIZE] = {0};
     for (long long i = 0; i < NUM_OF_VALUES; i++) {
         if (SHOW_LOGS) {
@@ -54,5 +55,13 @@ int main() {
     cout << "Number " << imin + 1 << " has appeared least times : " << min
          << "\n";
 
+    // Check Error Handling
+
+    cout << "\n - Bad paramaters error test -\n";
+    cout << "Equal interval ends (int 1-1) : " << Random::randInt(1,1) << "\n";
+    cout << "Equal interval ends (real 1.01-1.01) : " << Random::randReal(1.01,1.01) << "\n";
+    cout << "Reversed interval ends (int 2000-1000) : " << Random::randInt(2000,1000) << "\n";
+    cout << "Reversed interval ends (real 1234.1234-1234.1233) : " << Random::randReal(1234.1234,1234.1233) << "\n";
+    
     return 0;
 }

@@ -60,12 +60,15 @@ int32_t Random::randInt() {
 int32_t Random::randInt(const int32_t iStart, const int32_t iEnd) {
     if (checkInterval(iStart, iEnd)) {
         distribution = std::uniform_int_distribution<int32_t>(iStart, iEnd);
-        if (!initialised) {
-            seed();
-        }
-        int32_t random = distribution(generator);
-        return random;
+    } else {
+        distribution = std::uniform_int_distribution<int32_t>(iEnd, iStart);
     }
+
+    if (!initialised) {
+        seed();
+    }
+    int32_t random = distribution(generator);
+    return random;
 }
 
 // Returns a randomly generated double, in the 0-DBL_MAX range
@@ -82,10 +85,13 @@ double Random::randReal() {
 double Random::randReal(const double iStart, const double iEnd) {
     if (checkInterval(iStart, iEnd)) {
         realdistribution = std::uniform_real_distribution<double>(iStart, iEnd);
-        if (!initialised) {
-            seed();
-        }
-        double random = realdistribution(generator);
-        return random;
+    } else {
+        realdistribution = std::uniform_real_distribution<double>(iEnd, iStart);
     }
+    
+    if (!initialised) {
+        seed();
+    }
+    double random = realdistribution(generator);
+    return random;
 }
