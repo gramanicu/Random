@@ -14,7 +14,7 @@ using namespace std;
 // This is used to make the output more readable
 #define NUM_OF_PARTITIONS 25
 
-#define SHOW_LOGS false
+#define SHOW_LOGS true
 
 // At how many numbers should it say the current number of values generated
 #define SHOW_LOG_EVERY 1000
@@ -64,4 +64,6 @@ int main() {
     cout << "Reversed interval ends (real 1234.1234-1234.1233) : " << Random::randReal(1234.1234,1234.1233) << "\n";
     
     return 0;
+
+Running for 14 sec 
 }
