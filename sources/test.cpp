@@ -64,6 +64,4 @@ int main() {
     cout << "Reversed interval ends (real 1234.1234-1234.1233) : " << Random::randReal(1234.1234,1234.1233) << "\n";
     
     return 0;
-
-Running for 14 sec 
 }
