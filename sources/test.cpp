@@ -17,7 +17,7 @@ using namespace std;
 #define SHOW_LOGS true
 
 // At how many numbers should it say the current number of values generated
-#define SHOW_LOG_EVERY 100000
+#define SHOW_LOG_EVERY 500000000
 
 int main() {
     // Test Integer Distribution
