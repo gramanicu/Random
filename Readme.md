@@ -14,7 +14,15 @@ As it is suggested on [cppreference](https://en.cppreference.com/w/cpp/numeric/r
 2. Generate all numbers with a PRNG, that has that true random number used as a seed (`mt19937`)
 3. Use a uniform number distribution that produces random numbers only in a closed interval (ex. `uniform_int_distribution<int32_t>`).
 
-There are actually 3 possible values returned - bool, int, double
+## Functions
+
+There are 5 publicly exposed functions:
+
+1. randBool() - returns a randomly generated boolean
+2. randInt() - returns a randomly generated integer, with values between 0 and 
+3. randInt(int32_t iStart, int32_t iEnd) - returns a randomly generated integer, with values between iStart and IEnd
+4. randReal() - returns a randomly generated real number, with values between 0 and
+5. randReal(double iStart, double iEnd) - returns a randomly generated real number, with values between iStart and iEnd
 
 ## Reference
 

@@ -15,6 +15,8 @@ class Random {
     static std::uniform_real_distribution<double> realdistribution;
 
     static void seed();
+    static bool checkInterval(const int32_t iStart, const int32_t iEnd);
+    static bool checkInterval(const double iStart, const double iEnd);
 
     Random() = delete;
 
