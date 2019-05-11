@@ -1,14 +1,17 @@
+#include <chrono>
+#include <iomanip>
 #include <iostream>
 #include "../headers/EasyRand.h"
 
 using namespace EasyRand;
 using namespace std;
+using namespace std::chrono;
 
 // How many numbers should be tested
-#define NUM_OF_VALUES 5000000000
+#define NUM_OF_VALUES 1000000000
 
 // The upper limit of the interval from which should the numbers be generated
-#define MAX_SIZE 1000000
+#define MAX_SIZE 250000
 
 // In how many partitions should the dataset be split
 // This is used to make the output more readable
@@ -22,6 +25,8 @@ using namespace std;
 int main() {
     // Test Integer Distribution
     int32_t array[MAX_SIZE] = {0};
+
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
     for (long long i = 0; i < NUM_OF_VALUES; i++) {
         if (SHOW_LOGS) {
             if (i % SHOW_LOG_EVERY == 0) cerr << "Reached " << i << " values\n";
@@ -29,6 +34,7 @@ int main() {
         int x = Random::randInt(0, MAX_SIZE - 1);
         array[x] += 1;
     }
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
 
     int32_t max = INT32_MIN, min = INT32_MAX;
     int32_t imax = -1, imin = -1;
@@ -46,6 +52,9 @@ int main() {
         }
     }
 
+    auto duration = duration_cast<microseconds>(t2 - t1).count();
+    cout << "- Time taken to generate " << NUM_OF_VALUES
+         << " integers : " << duration << "\n";
     cout << "- Distribution in partitions -\n";
     for (int i = 0; i < NUM_OF_PARTITIONS; i++) {
         cout << "Partition " << i + 1 << " : " << partition[i] << "\n";
@@ -58,10 +67,13 @@ int main() {
     // Check Error Handling
 
     cout << "\n - Bad paramaters error test -\n";
-    cout << "Equal interval ends (int 1-1) : " << Random::randInt(1,1) << "\n";
-    cout << "Equal interval ends (real 1.01-1.01) : " << Random::randReal(1.01,1.01) << "\n";
-    cout << "Reversed interval ends (int 2000-1000) : " << Random::randInt(2000,1000) << "\n";
-    cout << "Reversed interval ends (real 1234.1234-1234.1233) : " << Random::randReal(1234.1234,1234.1233) << "\n";
-    
+    cout << "Equal interval ends (int 1-1) : " << Random::randInt(1, 1) << "\n";
+    cout << "Equal interval ends (real 1.01-1.01) : " << fixed
+         << Random::randReal(1.01, 1.01) << "\n";
+    cout << "Reversed interval ends (int 2000-1000) : "
+         << Random::randInt(2000, 1000) << "\n";
+    cout << "Reversed interval ends (real 1234.1234-1234.1233) : " << fixed
+         << Random::randReal(1234.1234, 1234.1233) << "\n";
+
     return 0;
 }

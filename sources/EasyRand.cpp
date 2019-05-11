@@ -88,7 +88,7 @@ double Random::randReal(const double iStart, const double iEnd) {
     } else {
         realdistribution = std::uniform_real_distribution<double>(iEnd, iStart);
     }
-    
+
     if (!initialised) {
         seed();
     }
