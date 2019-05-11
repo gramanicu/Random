@@ -1,2 +1,2 @@
 language: cpp
-script: make memory
+script: make run
