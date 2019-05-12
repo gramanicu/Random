@@ -1,2 +1,9 @@
+sudo: false
 language: cpp
 script: make run
+
+after_success:
+  - echo "Success"
+ 
+after_failure:
+- echo "Failure"

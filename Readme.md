@@ -1,6 +1,4 @@
-
-# EasyRand &middot; [![Build Status](https://travis-ci.com/gramanicu/EasyRand.svg?branch=master)](https://travis-ci.com/gramanicu/EasyRand) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
+# EasyRand &middot; [![Build Status](https://travis-ci.com/gramanicu/EasyRand.svg?branch=master)](https://travis-ci.com/gramanicu/EasyRand) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/775e7ff2d8f84694ac7e489a6b30b165)](https://www.codacy.com/app/gramanicu/EasyRand?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=gramanicu/EasyRand&amp;utm_campaign=Badge_Grade) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL).
 
@@ -19,7 +17,7 @@ As it is suggested on [cppreference](https://en.cppreference.com/w/cpp/numeric/r
 There are 5 publicly exposed functions:
 
 1. randBool() - returns a randomly generated boolean
-2. randInt() - returns a randomly generated integer, with values between 0 and 
+2. randInt() - returns a randomly generated integer, with values between 0 and
 3. randInt(int32_t iStart, int32_t iEnd) - returns a randomly generated integer, with values between iStart and IEnd
 4. randReal() - returns a randomly generated real number, with values between 0 and
 5. randReal(double iStart, double iEnd) - returns a randomly generated real number, with values between iStart and iEnd
