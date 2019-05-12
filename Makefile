@@ -20,16 +20,11 @@ build: $(OBJ)
 	@$(MAKE) -s gitignore ||:
 
 %.o: %.cpp
-	$(CC) -o $@ -c $< $(CFLAGS) 
+	@$(CC) -o $@ -c $< $(CFLAGS) ||:
 
-# Executes the binary
-run: build
-	./$(EXE)
-
-# Test the binary
+# Test the project
 test: build
-	./$(EXE) > test_result.txt
-
+	./$(EXE)
 
 # Deletes the binary and object files
 clean:

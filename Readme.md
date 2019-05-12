@@ -2,7 +2,7 @@
 
 More common randomization algorithms like `rand()` and `srand()`, have some problems, as it was pointed out [here](https://channel9.msdn.com/Events/GoingNative/2013/rand-Considered-Harmful) by Stephan T. Lavavej (Visual Studio C++ STL).
 
-So, to solve those problems (at least, some of them),  utilities from `random` library are used. A simple way to generate random numbers that don't suffer from those problems can be been implemented using just `random_device`, but it is not [very efficient] when it need to be called multiple times (as pointed out in its documentation on cppreference).
+So, to solve those problems (at least, some of them),  utilities from `random` library are used. A simple way to generate random numbers that don't suffer from those problems can be been implemented using just `random_device`, but it is not (very efficient) when it need to be called multiple times (as pointed out in its documentation on cppreference).
 
 As it is suggested on [cppreference](https://en.cppreference.com/w/cpp/numeric/random/random_device), a better random implementation uses `random_device` as a seed for a PRNG (pseudo-random number generator), such as `mt19937`. This library implements this kind of algorithm.
 

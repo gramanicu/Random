@@ -54,7 +54,7 @@ int main() {
 
     auto duration = duration_cast<microseconds>(t2 - t1).count();
     cout << "- Time taken to generate " << NUM_OF_VALUES
-         << " integers : " << duration << "\n";
+         << " integers : " << duration << "ms ( " << duration_cast<seconds>(t2-t1).count() << "seconds) \n";
     cout << "- Distribution in partitions -\n";
     for (int i = 0; i < NUM_OF_PARTITIONS; i++) {
         cout << "Partition " << i + 1 << " : " << partition[i] << "\n";
