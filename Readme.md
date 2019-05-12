@@ -1,4 +1,5 @@
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/edbe51a388274689a22a1cc714b4aff1)](https://app.codacy.com/app/gramanicu/EasyRand?utm_source=github.com&utm_medium=referral&utm_content=gramanicu/EasyRand&utm_campaign=Badge_Grade_Dashboard)
 # EasyRand &middot; [![Build Status](https://travis-ci.com/gramanicu/EasyRand.svg?branch=master)](https://travis-ci.com/gramanicu/EasyRand) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
