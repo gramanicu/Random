@@ -24,14 +24,19 @@ bin/EasyRand.o: sources/EasyRand.cpp
 	@$(CC) -o $@ -c $< $(CFLAGS) -fpic ||:
 
 # Test the project
-test: build sources/test.o
+test: build bin/test.o
 	$(info Compiling test...)
 	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
-	@$(CC) -L./lib -Wl,-rpath=./lib -o $(EXE) sources/test.o $(CFLAGS) -leasyrand ||:
+	@$(CC) -L./lib -Wl,-rpath=./lib -o $(EXE) bin/test.o $(CFLAGS) -leasyrand ||:
 	-@rm -f *.o ||:
 	$(info Started test)
 	@./$(EXE) ||:
 
+bin/test.o: sources/test.cpp
+	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
+	@$(CC) -o $@ -c $< $(CFLAGS) ||:
+
+ 
 
 # Deletes the binary and object files
 clean:
