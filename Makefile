@@ -7,35 +7,42 @@
 CC = g++
 CFLAGS = -Wno-unused-parameter -Wall -Wextra -pedantic -g -O3 -std=c++11
 EXE = bin/main
-SRC = $(wildcard */*.cpp)
+LIB = lib/libeasyrand.so
+SRC = sources/EasyRand.cpp
 OBJ = $(SRC:.cpp=.o)
 
-# Compiles the program
-build: $(OBJ)
-	$(info Compiling code...)
-	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
-	@$(CC) -o $(EXE) $^ $(CFLAGS) ||:
-	$(info Compilation successfull)
+# Compiles the library
+build: bin/EasyRand.o
+	$(info Compiling library...)
+	@if [ ! -d "./lib" ]; then mkdir ./lib; fi ||:
+	@$(CC) -shared -o $(LIB) $^ $(CFLAGS) -fpic ||:
 	-@rm -f *.o ||:
-	@$(MAKE) -s gitignore ||:
 
-%.o: %.cpp
-	@$(CC) -o $@ -c $< $(CFLAGS) ||:
+# Compiles the object files for the library
+bin/EasyRand.o: sources/EasyRand.cpp
+	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
+	@$(CC) -o $@ -c $< $(CFLAGS) -fpic ||:
 
 # Test the project
-test: build
-	./$(EXE)
+test: build sources/test.o
+	$(info Compiling test...)
+	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
+	@$(CC) -L./lib -Wl,-rpath=./lib -o $(EXE) sources/test.o $(CFLAGS) -leasyrand ||:
+	-@rm -f *.o ||:
+	$(info Started test)
+	@./$(EXE) ||:
+
 
 # Deletes the binary and object files
 clean:
-	rm -f $(EXE) $(OBJ)
+	rm -f $(EXE) */*.o $(LIB)
 	echo "Deleted the binary and object files"
 
 # Automatic coding style
 beauty:
 	clang-format -i -style=file sources/*.cpp
 	clang-format -i -style=file headers/*.h
-
+	
 # Checks the memory for leaks
 MFLAGS = --leak-check=full --show-leak-kinds=all --track-origins=yes
 memory:build
@@ -45,5 +52,6 @@ memory:build
 gitignore:
 	@echo "$(EXE)" >> .gitignore ||:
 	@echo "sources/*.o" >> .gitignore ||:
+	@echo "lib/*.so" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	echo "Updated .gitignore"
