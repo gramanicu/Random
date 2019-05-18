@@ -16,7 +16,7 @@ build: bin/EasyRand.o
 	$(info Compiling library...)
 	@if [ ! -d "./lib" ]; then mkdir ./lib; fi ||:
 	@$(CC) -shared -o $(LIB) $^ $(CFLAGS) -fpic ||:
-	-@rm -f *.o ||:
+	-@rm -f */*.o ||:
 
 # Compiles the object files for the library
 bin/EasyRand.o: sources/EasyRand.cpp
@@ -28,15 +28,13 @@ test: build bin/test.o
 	$(info Compiling test...)
 	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
 	@$(CC) -L./lib -Wl,-rpath=./lib -o $(EXE) bin/test.o $(CFLAGS) -leasyrand ||:
-	-@rm -f *.o ||:
+	-@rm -f */*.o ||:
 	$(info Started test)
 	@./$(EXE) ||:
 
 bin/test.o: sources/test.cpp
 	@if [ ! -d "./bin" ]; then mkdir ./bin; fi ||:
 	@$(CC) -o $@ -c $< $(CFLAGS) ||:
-
- 
 
 # Deletes the binary and object files
 clean:
@@ -56,7 +54,7 @@ memory:build
 # Adds and updates gitignore rules
 gitignore:
 	@echo "$(EXE)" >> .gitignore ||:
-	@echo "sources/*.o" >> .gitignore ||:
+	@echo "*/*.o" >> .gitignore ||:
 	@echo "lib/*.so" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
 	echo "Updated .gitignore"
