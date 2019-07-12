@@ -53,7 +53,7 @@ memory:build
 
 # Adds and updates gitignore rules
 gitignore:
-	@echo "$(EXE)" >> .gitignore ||:
+	@echo "$(EXE)" > .gitignore ||:
 	@echo "*/*.o" >> .gitignore ||:
 	@echo "lib/*.so" >> .gitignore ||:
 	@echo ".vscode*" >> .gitignore ||:	
